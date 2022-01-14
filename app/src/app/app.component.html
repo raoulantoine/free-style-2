@@ -1,0 +1,26 @@
+<div *ngIf="studentInformation">
+  <p>Bonjour {{studentInformation.prenom}} {{studentInformation.nom}} de la promotion {{studentInformation.promo}}</p>
+  <strong>merci de m'avoir deployé avec succés ❤</strong>
+
+  <p *ngIf="studentInformation.secret != null">
+    Ne dite rien mais mon secret est
+    <span style="cursor: pointer; color: red; text-decoration: underline" *ngIf="!showSecret"
+          (click)="showSecret = true">(show)</span>
+    <span style="cursor: pointer; color: red; text-decoration: underline" *ngIf="showSecret"
+          (click)="showSecret = false">(hide)</span>:
+    <strong *ngIf="showSecret">{{studentInformation.secret}}</strong>
+  </p>
+
+  <div *ngIf="studentInformation.hobbies != null">
+    Mes hobbies sont :
+    <ul>
+      <li *ngFor="let hobby of studentInformation.hobbies"> {{hobby}}</li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="studentInformation === null">
+  <p>Bonjour inconnu</p>
+  <strong>Le deploiement n'a pas bien fonctionné !! </strong>
+  <p>il me manque tes informations pour te connaitre et te remercié 💔 </p>
+</div>
